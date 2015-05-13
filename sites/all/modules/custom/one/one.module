@@ -1,0 +1,14 @@
+<?php
+
+
+/**
+ * one module
+ *
+**/
+
+function one_menu() {
+    $items['one'] =array(
+        'title' => 'Моё меню',
+        'access callback' => TRUE,
+    );
+}
