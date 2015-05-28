@@ -1,0 +1,31 @@
+<?php
+/**
+ * @file
+ * Module file for two_form.
+ */
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+
+function two_form_alter(&$form, &$form_state, $form_id, $r) {
+     if ($form_id == 'one_form') {
+                $form['field_three'] = array(
+                        '#type' => 'textfield',
+                        '#title' => t('Text Field Three'),
+                        '#description' => t('full name'),
+                        'value' == $r,
+
+                    );
+                $form['submit_two'] = array(
+                        '#type' => 'submit',
+                        '#value' => t('Submit'),
+                        '#submit' => array('two_form_alter_submit'),
+                    );
+            }
+}
+
+
+function two_form_alter_submit( $form, &$form_state, &$r) {
+//        drupal_set_message(t('Message: @values', array('@values' => var_export($form_state['values'], TRUE))));
+        drupal_set_message(t('Message: @values'.$r));
+    }

@@ -1,14 +1,36 @@
 <?php
-
+/**
+ * @file
+ * Module file for one_form.
+ */
 
 /**
- * one module
- *
-**/
+ * Implements hook_menu().
+ */
 
-function one_menu() {
-    $items['one'] =array(
-        'title' => 'Моё меню',
+function one_menu(){
+    $items['one'] = array(
+        'title' => 'One Form',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('one_form'),
         'access callback' => TRUE,
+//        'file' => 'one_form.inc',
     );
+    return $items;
+
+}
+function one_form($form, &$form_state){
+    $form['field_one'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Form module one'),
+        '#description' => t('Name'),
+        '#required' => TRUE,
+    );
+    $form['field_two'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Form module one'),
+        '#description' => t('Surname'),
+        '#required' => TRUE,
+    );
+    return $form;
 }
