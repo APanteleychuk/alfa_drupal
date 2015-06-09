@@ -8,15 +8,26 @@
  * Implements hook_menu().
  */
 
-function one_menu(){
+function one_menu()
+{
     $items['one'] = array(
         'title' => 'One Form',
         'page callback' => 'drupal_get_form',
         'page arguments' => array('one_form'),
         'access callback' => TRUE,
-//        'file' => 'one_form.inc',
     );
     return $items;
+}
+
+    function two_menu(){
+        $items['two'] = array(
+            'title' => 'Two Form',
+            'page callback' => 'drupal_get_form',
+            'page arguments' => array('one_form'),
+            'access callback' => TRUE,
+        );
+        return $items;
+
 
 }
 function one_form($form, &$form_state){

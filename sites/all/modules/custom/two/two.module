@@ -7,15 +7,14 @@
  * Implements hook_form_FORM_ID_alter().
  */
 
-function two_form_alter(&$form, &$form_state, $form_id, $r) {
+function two_form_alter(&$form, &$form_state, $form_id){
      if ($form_id == 'one_form') {
-                $form['field_three'] = array(
+                $form['field_three'] = [
                         '#type' => 'textfield',
                         '#title' => t('Text Field Three'),
                         '#description' => t('full name'),
-                        'value' == $r,
+                ];
 
-                    );
                 $form['submit_two'] = array(
                         '#type' => 'submit',
                         '#value' => t('Submit'),
@@ -25,7 +24,15 @@ function two_form_alter(&$form, &$form_state, $form_id, $r) {
 }
 
 
-function two_form_alter_submit( $form, &$form_state, &$r) {
-//        drupal_set_message(t('Message: @values', array('@values' => var_export($form_state['values'], TRUE))));
-        drupal_set_message(t('Message: @values'.$r));
+/**
+ * new version
+ */
+function two_form_alter_submit($form, &$form_state){
+    $r=$form_state['values']['field_one'].''.$form_state['values']['field_two'].''.$form_state['values']['field_three'];
+    drupal_set_message(t('@values',array('@values'=>$r)));
     }
+/**
+ *  old version, before checking
+ */
+//function two_form_alter_submit( $form, &$form_state, &$r) {
+//        drupal_set_message(t('Message: @values', array('@values' => var_export($form_state['values'], TRUE))));
